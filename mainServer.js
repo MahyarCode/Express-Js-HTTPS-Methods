@@ -6,11 +6,10 @@ then you can import your code as the following:
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import posts from "./src/routes/posts.js";
+import routes from "./src/routes/routes.js";
 import logger from "./src/middleware/logger.js";
 import errorHandler from "./src/middleware/error.js";
 import notFound from "./src/middleware/notFound.js";
-// import { posts } from "../../Database/DB.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,10 +17,6 @@ console.log("*************************************");
 console.log(__filename);
 console.log(__dirname);
 console.log("*************************************");
-
-// const express = require("express");
-// const posts = require("./routes/posts.js");
-// const path = require("path")
 
 const port = process.env.PORT || 8000;
 
@@ -39,7 +34,7 @@ app.use(logger);
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
-app.use("/api/posts", posts);
+app.use("/api/posts", routes);
 
 // Error Handler // it must be written after "Routes", because it doesn't work if you write before it
 app.use(errorHandler);
