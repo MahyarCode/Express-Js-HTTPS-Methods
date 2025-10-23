@@ -3,41 +3,41 @@ To import package as EM6 ( not CommonJS ), you should add {"type": "module"} in 
 then you can import your code as the following:
 */
 
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import routes from "./src/routes/routes.js";
-import logger from "./src/middleware/logger.js";
-import errorHandler from "./src/middleware/error.js";
-import notFound from "./src/middleware/notFound.js";
+import express from 'express'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import routes from './src/routes/routes.js'
+import logger from './src/middleware/logger.js'
+import errorHandler from './src/middleware/error.js'
+import notFound from './src/middleware/notFound.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-console.log("*************************************");
-console.log(__filename);
-console.log(__dirname);
-console.log("*************************************");
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+console.log('*************************************')
+console.log(__filename)
+console.log(__dirname)
+console.log('*************************************')
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000
 
-const app = express();
+const app = express()
 
 // for POST request
 // body parser middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 // Logger Middleware
-app.use(logger);
+app.use(logger)
 
 // setup static folder
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
-app.use("/api/posts", routes);
+app.use('/api/posts', routes)
 
 // Error Handler // it must be written after "Routes", because it doesn't work if you write before it
-app.use(errorHandler);
-app.use(notFound);
+app.use(errorHandler)
+app.use(notFound)
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port, () => console.log(`Server is running on port ${port}`))

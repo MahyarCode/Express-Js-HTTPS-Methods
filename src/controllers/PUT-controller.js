@@ -1,3 +1,1 @@
-export const updatePost () => {
-     
-}
+export const updatePost = () => {};

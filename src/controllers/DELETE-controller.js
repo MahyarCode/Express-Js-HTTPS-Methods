@@ -1,3 +1,1 @@
-export const deletePost () => {
-     
-}
+export const deletePost = () => {};
