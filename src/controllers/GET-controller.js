@@ -16,4 +16,17 @@ export const getAllPosts = (req, res, next) => {
    }
 }
 
-export const getPost = () => {}
+export const getPost = (req, res, next) => {
+   const id = req.params.id
+   const thePost = posts.find((obj) => obj.id == id)
+
+   if (!thePost || isNaN(id)) {
+      const error = new Error(
+         `A post with the id of ${isNaN(id) ? 'NaN' : id} was not found`
+      )
+      error.status = 404
+      return next(error)
+   } else {
+      res.status(200).json(thePost)
+   }
+}
