@@ -18,7 +18,7 @@ export const getAllPosts = (req, res, next) => {
 
 export const getPost = (req, res, next) => {
    const id = req.params.id
-   const thePost = posts.find((obj) => obj.id == id)
+   const thePost = posts.find((post) => post.id == id)
 
    if (!thePost || isNaN(id)) {
       const error = new Error(
